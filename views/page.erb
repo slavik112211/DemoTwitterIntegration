@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- saved from url=(0252)https://mail-attachment.googleusercontent.com/attachment/u/0/?ui=2&ik=012a15d2c4&view=att&th=14b4baa05145fb83&attid=0.1&disp=inline&realattid=f_i5o86sb50&safe=1&zw&saduie=AG9B_P_YPvJqBO9bjFrWhRPEwRKp&sadet=1423335869104&sads=PH0yfinHQP3eVtgRlzaUXYdzWcY -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css"></style>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.2.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/backbone-localstorage.js/1.1.16/backbone.localStorage.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/backbone-localstorage.js/1.1.16/backbone.localStorage.js"></script>
+<script type="text/javascript" src="application.js"></script>
+
+</head><body>
+
+
+
+<div style="font-family:Arial,Helvetica,sans-serif;margin:0px auto;width:980px;line-height:1.2em">
+
+	<h1>A Little Twitter Page</h1>
+
+	<p>We at AppDirect are interested in making a front-end with standards-compliant, asyncronous, api-driven, beautious javascript. Your task is to do just that with <a href="https://dev.twitter.com/docs/api/1.1" target="_blank">Twitter's REST api</a>.
+
+	</p><p>Please complete <b>any</b> number of the steps below within <b>5 days</b> of us sending you this document. You may put in as many hours as you wish, but we recommend a maximum of around 5
+		hours. Use any framework and languages you would like (evidence of native JavaScript use encouraged) to complete the task. We will accept an email attachment of files, a link to a github repo,
+		or a url of a website where your solution is posted.
+
+	</p><p>We are looking for code quality, knowledge of cross-browser compatibility, quick load times, and innovation/thoughtfulness.
+
+
+
+	</p><h2>Part I: get it.</h2>
+
+	<p>Use the <a href="https://dev.twitter.com/docs/api/1.1" target="_blank">Twitter API</a> to fill the following areas on the page:
+
+	</p><div style="float:left;display:inline;width:260px;background:#f4f4f4;border:1px solid #ddd;padding:220px 20px;text-align:center;font-weight:bold;margin:0 10px">
+		<div id="tweets1" class="tweets"></div>
+	</div>
+	<div style="float:left;display:inline;width:260px;background:#f4f4f4;border:1px solid #ddd;padding:220px 20px;text-align:center;font-weight:bold;margin:0 10px">
+		<div id="tweets2" class="tweets"></div>
+	</div>
+	<div style="float:left;display:inline;width:260px;background:#f4f4f4;border:1px solid #ddd;padding:220px 20px;text-align:center;font-weight:bold;margin:0 10px">
+		<div id="tweets3" class="tweets"></div>
+	</div>
+	<div style="clear:both"></div>
+	<p>(Check out the <a href="https://dev.twitter.com/docs/api/1/get/statuses/user_timeline" target="_blank">User Timeline</a> API)
+
+	</p><p>Each tweet should include at minimum:
+	</p><ul>
+		<li>The tweet content
+		</li><li>A well-formatted created_at date
+		</li><li>A link to the tweet.
+		</li><li>For retweets and mentions, the username should be included.
+	</li></ul>
+	<p>Please note that Twitter's REST api does not accept cross-domain requests.  Feel free to use a simple proxy server, such as
+		<a href="http://mikerogers.io/2013/02/25/how-use-twitter-oauth-1-1-javascriptjquery.html" target="_blank">this</a>.</p>
+	<p style="color:#666"><b>Bonuses/for fun</b>: Make the columns flexible for screen width so the columns fill 100% of the page width. Layout could be as small as 320px wide. Column arrangment is
+		open-ended.</p>
+
+
+
+	<h2>Part II: Meta</h2>
+
+	<p>Make an "edit layout" view that has a form to change the layout settings.</p>
+
+	<p>Use HTML5 LocalStorage to store and load the layout settings.</p>
+
+	<p>Configurable settings could possibly include:
+	</p><ul>
+		<li>The order of the columns.
+		</li><li>The time range of the tweets shown.
+		</li><li>The number of tweets shown in each column.
+		</li><li>The overall palette/skin of the page.
+	</li></ul>
+	<p>The "edit layout" panel can appear either on the same page as the tweets page, on its own page, or embedded within the tweets layout - whichever you would like. There should be a
+		straightforward way to toggle between edit and view modes, and it should be clear to the user which mode they are currently in.
+
+	</p><p style="color:#666"><b>Bonuses/for fun</b>: Use an interaction (like drag and drop) instead of a form field to order the columns.</p>
+
+<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p></div></body></html>
