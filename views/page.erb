@@ -18,11 +18,7 @@
 <script type="text/javascript" src="application.js"></script>
 
 </head><body>
-
-
-
-<div style="font-family:Arial,Helvetica,sans-serif;margin:0px auto;width:980px;line-height:1.2em">
-
+	<div class ="text_article">
 	<h1>A Little Twitter Page</h1>
 
 	<p>We at AppDirect are interested in making a front-end with standards-compliant, asyncronous, api-driven, beautious javascript. Your task is to do just that with <a href="https://dev.twitter.com/docs/api/1.1" target="_blank">Twitter's REST api</a>.
@@ -44,10 +40,15 @@
 	<p>Use the <a href="https://dev.twitter.com/docs/api/1.1" target="_blank">Twitter API</a> to fill the following areas on the page:
 
 	</p>
-	<div id="tweets1" class="tweets_window"></div>
-	<div id="tweets2" class="tweets_window"></div>
-	<div id="tweets3" class="tweets_window"></div>
+	</div>
+	<div class="tweets_container">
+		<div id="tweets1" class="tweets_window"></div>
+		<div id="tweets2" class="tweets_window"></div>
+		<div id="tweets3" class="tweets_window"></div>
+	</div>
 	<div class="clearfix"></div>
+
+	<div class ="text_article">
 	<p>(Check out the <a href="https://dev.twitter.com/docs/api/1/get/statuses/user_timeline" target="_blank">User Timeline</a> API)
 
 	</p><p>Each tweet should include at minimum:
@@ -82,4 +83,6 @@
 
 	</p><p style="color:#666"><b>Bonuses/for fun</b>: Use an interaction (like drag and drop) instead of a form field to order the columns.</p>
 
-<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p></div></body></html>
+	<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+	</div>
+</body></html>

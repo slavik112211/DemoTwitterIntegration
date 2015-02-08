@@ -1,12 +1,29 @@
+.text_article {
+	font-family:Arial,Helvetica,sans-serif;
+	margin:0px auto;
+	width:980px;
+	line-height:1.2em;
+}
+
+.tweets_container {
+	width: 105%;
+}
+
 .tweets_window{
-	float:left;
-	display:inline;
-	width:304px;
+	display:inline-block;
+	width:31%;
 	height: 500px;
 	background:#f4f4f4;
 	border:1px solid #ddd;
-	margin:0 10px;
+	margin:0 10px 20px 0px;
 	overflow: scroll;
+}
+
+@media screen and (max-width: 600px) {
+    .tweets_window {
+        width: 100%;
+        display: block;
+    }
 }
 
 .tweet {
