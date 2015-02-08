@@ -2,11 +2,18 @@
 <!-- saved from url=(0252)https://mail-attachment.googleusercontent.com/attachment/u/0/?ui=2&ik=012a15d2c4&view=att&th=14b4baa05145fb83&attid=0.1&disp=inline&realattid=f_i5o86sb50&safe=1&zw&saduie=AG9B_P_YPvJqBO9bjFrWhRPEwRKp&sadet=1423335869104&sads=PH0yfinHQP3eVtgRlzaUXYdzWcY -->
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css"></style>
 
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.2.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/backbone-localstorage.js/1.1.16/backbone.localStorage.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/backbone-localstorage.js/1.1.16/backbone.localStorage.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/backbone-localstorage.js/1.1.16/backbone.localStorage-min.js"></script>
+<script type="text/javascript" src="libs/q.js"></script>
+<script type="text/javascript" src="libs/templateFromUrl.js"></script>
+
+<link rel="stylesheet" type="text/css" href="styles/styles.css">
+
+<script type="text/javascript" src="models/TwitterAuthModel.js"></script>
+<script type="text/javascript" src="models/TweetsModel.js"></script>
+<script type="text/javascript" src="views/TwitterWindowView.js"></script>
 <script type="text/javascript" src="application.js"></script>
 
 </head><body>
@@ -27,19 +34,18 @@
 
 
 
-	</p><h2>Part I: get it.</h2>
+	</p>
+
+	<div id="twitterAuth"></div>
+
+	<h2>Part I: get it.</h2>
 
 	<p>Use the <a href="https://dev.twitter.com/docs/api/1.1" target="_blank">Twitter API</a> to fill the following areas on the page:
 
-	</p><div style="float:left;display:inline;width:260px;background:#f4f4f4;border:1px solid #ddd;padding:220px 20px;text-align:center;font-weight:bold;margin:0 10px">
-		<div id="tweets1" class="tweets"></div>
-	</div>
-	<div style="float:left;display:inline;width:260px;background:#f4f4f4;border:1px solid #ddd;padding:220px 20px;text-align:center;font-weight:bold;margin:0 10px">
-		<div id="tweets2" class="tweets"></div>
-	</div>
-	<div style="float:left;display:inline;width:260px;background:#f4f4f4;border:1px solid #ddd;padding:220px 20px;text-align:center;font-weight:bold;margin:0 10px">
-		<div id="tweets3" class="tweets"></div>
-	</div>
+	</p>
+	<div id="tweets1" class="tweets_window"></div>
+	<div id="tweets2" class="tweets_window"></div>
+	<div id="tweets3" class="tweets_window"></div>
 	<div style="clear:both"></div>
 	<p>(Check out the <a href="https://dev.twitter.com/docs/api/1/get/statuses/user_timeline" target="_blank">User Timeline</a> API)
 

@@ -1,0 +1,11 @@
+<div class="tweets">
+<% _.each(tweets, function(tweet) { %>
+	<div class="tweet">
+		<div class="property"><%= tweet.timestamp %></div>
+		<div class="property"><%= tweet.text %></div>
+		<% _.each(tweet.entities.urls, function(url) { %>
+			<div class="property"><a href="<%= url.url %>"><%= url.url %></a></div>
+		<% }); %>
+	</div>
+<% }); %>
+</div>
