@@ -1,7 +1,7 @@
 .tweets_window{
 	float:left;
 	display:inline;
-	width:260px;
+	width:304px;
 	height: 500px;
 	background:#f4f4f4;
 	border:1px solid #ddd;
@@ -13,8 +13,24 @@
 	background-color: white;
 	margin: 10px;
 	padding: 5px 10px 5px 10px;
+	border: 1px solid grey;
+	border-radius: 4px;
+	box-shadow: 3px 3px 5px #888888;
 }
 
 .tweet .property {
 	padding-bottom: 5px;
+}
+
+.tweet .header {
+	margin-bottom: 10px;
+}
+
+.tweet .header .profile_image {
+	float: left;
+	margin-right: 10px;
+}
+
+.clearfix {
+	clear:both;
 }

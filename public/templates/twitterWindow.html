@@ -1,11 +1,13 @@
 <div class="tweets">
 <% _.each(tweets, function(tweet) { %>
 	<div class="tweet">
-		<div class="property"><%= tweet.timestamp %></div>
+		<div class="header">
+			<div class="profile_image"><img src='<%= tweet.display_properties.user_image_url %>'></img></div>
+			<div class="user"><%= tweet.display_properties.user_tag %></div>
+			<div class="property"><%= tweet.timestamp %></div>
+		</div>
+		<div class="clearfix"></div>
 		<div class="property"><%= tweet.text %></div>
-		<% _.each(tweet.entities.urls, function(url) { %>
-			<div class="property"><a href="<%= url.url %>"><%= url.url %></a></div>
-		<% }); %>
 	</div>
 <% }); %>
 </div>
