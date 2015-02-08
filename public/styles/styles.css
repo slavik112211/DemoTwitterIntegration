@@ -5,6 +5,11 @@
 	line-height:1.2em;
 }
 
+#preferences {
+	margin:0px auto 20px auto;
+	width:980px;
+}
+
 .tweets_container {
 	width: 105%;
 }

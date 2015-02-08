@@ -3,27 +3,15 @@ function Application() {
 		var that = this;
 		this.initRouter();
 		this.loginToTwitter().then(function(){
-			that.initTwitterWindows();
+			that.initPreferences();
+			that.initTwitterModels().then(function(){
+				that.initTwitterWindows();
+			});
 		});
 	};
 
-	//router is not used currently
 	this.initRouter = function(){
-		var Router = Backbone.Router.extend({
-		routes: {
-			'loginToTwitter': 'loginToTwitter',
-			'tweets/:twitter_id': 'showTweets'
-		}});
-		Application.router = new Router;
 
-		Application.router.on('route:loginToTwitter', function(){
-			console.log("ping");
-		});
-
-		Application.router.on('route:showTweets', function(twitter_id){
-			console.log("pong");
-		});
-		Backbone.history.start();
 	};
 
 	this.loginToTwitter = function(){
@@ -31,17 +19,45 @@ function Application() {
 		return Application.twitterAuth.authenticate();
 	};
 
+	this.initPreferences = function(){
+		Application.preferencesModel = new PreferencesModel();
+		Application.preferencesView = new PreferencesView({el: "#preferences"});
+	};
+
+	this.initTwitterModels = function(){
+		var tweetsModel = null;
+		Application.tweetsModels = new Array();
+		var tweetsPromises = new Array();
+		_.each(Application.preferencesModel.twitterUsers, function(twitterUser){
+			tweetsModel = new TweetsModel(twitterUser);
+			Application.tweetsModels.push(tweetsModel);
+			tweetsPromises.push(tweetsModel.getTweets());
+		});
+		return Q.all(tweetsPromises);
+	};
+
 	this.initTwitterWindows = function(){
-		Application.tweets1 = new TweetsModel("AppDirect");
-		Application.tweets2 = new TweetsModel("laughingsquid");
-		Application.tweets3 = new TweetsModel("techcrunch");
-		this.tweetsPromise = Q.all([Application.tweets1.getTweets(), Application.tweets2.getTweets(), Application.tweets3.getTweets()]);
-		this.tweetsPromise.then(function(){
-			Application.twitterWindow1 = new TwitterWindowView({el: "#tweets1", model: Application.tweets1});
-			Application.twitterWindow2 = new TwitterWindowView({el: "#tweets2", model: Application.tweets2});
-			Application.twitterWindow3 = new TwitterWindowView({el: "#tweets3", model: Application.tweets3});
+		Application.tweetsWindows = new Array();
+		_.each(Application.tweetsModels, function(tweetsModel, index){
+			Application.tweetsWindows.push(
+				new TwitterWindowView({el: "#tweets"+index, model: tweetsModel}));
 		});
 	};
+
+	this.rearrangeWindows = function(){
+		var rearrangedWindows = new Array();
+		_.each(Application.preferencesModel.twitterUsers, function(twitterUser){
+			rearrangedWindows.push(
+				_.find(Application.tweetsWindows, function(tweetsWindow){
+					return tweetsWindow.model.userId === twitterUser;
+				}));
+		});
+		Application.tweetsWindows = rearrangedWindows;
+		_.each(Application.tweetsWindows, function(tweetsWindow, index){
+			tweetsWindow.setElement("#tweets"+index);
+			tweetsWindow.render();
+		});
+	}
 };
 
 Application = new Application();
