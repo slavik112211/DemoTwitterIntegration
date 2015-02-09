@@ -5,11 +5,6 @@
 	line-height:1.2em;
 }
 
-#preferences {
-	margin:0px auto 20px auto;
-	width:980px;
-}
-
 .tweets_container {
 	width: 105%;
 }
@@ -55,4 +50,42 @@
 
 .clearfix {
 	clear:both;
+}
+
+#preferences_view {
+	margin:0px auto 20px auto;
+	width:980px;
+}
+
+.preferences{
+	display: none;
+	margin-top: 10px;
+}
+
+a.togglePreferences {
+	font-size: 30px;
+	font-family: sans-serif;
+}
+
+ul.sortable {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+ul.sortable li {
+	margin: 0 3px 3px 3px;
+	padding: 0.4em;
+	padding-left: 1.5em;
+	font-size: 1.2em;
+	height: 18px;
+	cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+}
+
+ul.sortable li:active {
+    cursor: grabbing;
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
 }

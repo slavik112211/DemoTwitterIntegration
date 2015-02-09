@@ -1,1 +1,13 @@
-<a class="changePref" href="#">Change preferences</a>
+<a class="togglePreferences" href="#">Change preferences</a>
+
+<div class="preferences">
+	Columns order rearrange:
+	<ul class="sortable">
+		<% _.each(twitterUsers, function(twitterUser) { %>
+			<li class="ui-state-default" data-twitter-id="<%= twitterUser %>">
+				@<%= twitterUser %>
+			</li>
+		<% }); %>
+	</ul>
+	<button class="savePreferences">Save</button>
+</div>

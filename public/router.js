@@ -1,14 +1,16 @@
 var Router = Backbone.Router.extend({
-routes: {
-	'preferences': 'preferences',
-	'*notFound': 'dashboard'
-}});
-Application.router = new Router;
+	routes: {
+		'preferences': 'preferences',
+		'dashboard': 'dashboard'
+	},
+	initialize: function() {
+		this.on('route:preferences', function(){
+			// router is only used to change browser URL
+		});
+		this.on('route:dashboard', function(){
+			// router is only used to change browser URL
+		});
+		Backbone.history.start();
+	}
+});
 
-Application.router.on('route:preferences', function(){
-	console.log("show preferences");
-});
-Application.router.on('route:dashboard', function(){
-	console.log("show dashboard");
-});
-Backbone.history.start();

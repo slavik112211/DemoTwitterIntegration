@@ -1,6 +1,7 @@
 var PreferencesView = Backbone.View.extend({
 	events: {
-		"click .changePref" : "changePref"
+		"click .togglePreferences" : "togglePreferences",
+		"click .savePreferences" : "savePreferences"
 	},
 	initialize: function(properties) {
 		this.el = properties.el;
@@ -10,12 +11,30 @@ var PreferencesView = Backbone.View.extend({
 	},
 
 	render: function() {
-      	this.$el.html(this.template(this.model));
+		this.$el.html(this.template(this.model));
+		$(this.$el).find("ul.sortable").sortable({ update: this.sortTwitterColumns });
+		$(this.$el).find("ul.sortable").disableSelection();
 		return this;
 	},
 
-	changePref: function() {
-		Application.preferencesModel.twitterUsers = ["techcrunch", "AppDirect", "laughingsquid"];
-		Application.rearrangeWindows();
+	sortTwitterColumns: function(event, ui){
+		Application.preferencesView.model.twitterUsers = 
+			_.map($(Application.preferencesView.$el).find("ul.sortable li"), function(li){
+				return $(li).data("twitter-id");
+			});
+	},
+
+	savePreferences: function() {
+		Application.rearrangeTwitterViews();
+		this.togglePreferences();
+	},
+
+	togglePreferences: function(event) {
+		this.$el.find(".preferences").slideToggle(this.onPreferencesSlideToggle);
+		if(event) event.preventDefault();
+	},
+	onPreferencesSlideToggle: function(){
+		var navigateTo = $('.preferences').is(':visible') ? "preferences" : "dashboard";
+		Application.router.navigate(navigateTo, {trigger: true});
 	}
 });

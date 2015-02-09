@@ -2,16 +2,18 @@ function Application() {
 	this.initialize = function(){
 		var that = this;
 		this.initRouter();
-		this.loginToTwitter().then(function(){
+		this.loginToTwitter()
+		.then(function(){
 			that.initPreferences();
-			that.initTwitterModels().then(function(){
-				that.initTwitterWindows();
-			});
+			return that.initTwitterModels();
+		}).then(function(){
+			that.initTwitterViews();
 		});
+		Application.router.navigate("dashboard");
 	};
 
 	this.initRouter = function(){
-
+		Application.router = new Router;
 	};
 
 	this.loginToTwitter = function(){
@@ -21,7 +23,7 @@ function Application() {
 
 	this.initPreferences = function(){
 		Application.preferencesModel = new PreferencesModel();
-		Application.preferencesView = new PreferencesView({el: "#preferences"});
+		Application.preferencesView = new PreferencesView({el: "#preferences_view", model: Application.preferencesModel});
 	};
 
 	this.initTwitterModels = function(){
@@ -36,7 +38,7 @@ function Application() {
 		return Q.all(tweetsPromises);
 	};
 
-	this.initTwitterWindows = function(){
+	this.initTwitterViews = function(){
 		Application.tweetsWindows = new Array();
 		_.each(Application.tweetsModels, function(tweetsModel, index){
 			Application.tweetsWindows.push(
@@ -44,16 +46,11 @@ function Application() {
 		});
 	};
 
-	this.rearrangeWindows = function(){
-		var rearrangedWindows = new Array();
-		_.each(Application.preferencesModel.twitterUsers, function(twitterUser){
-			rearrangedWindows.push(
-				_.find(Application.tweetsWindows, function(tweetsWindow){
-					return tweetsWindow.model.userId === twitterUser;
-				}));
-		});
-		Application.tweetsWindows = rearrangedWindows;
-		_.each(Application.tweetsWindows, function(tweetsWindow, index){
+	this.rearrangeTwitterViews = function(){
+		_.each(Application.preferencesModel.twitterUsers, function(twitterUser, index){
+			tweetsWindow = _.find(Application.tweetsWindows, function(tweetsWindow){
+				return tweetsWindow.model.userId === twitterUser;
+			});
 			tweetsWindow.setElement("#tweets"+index);
 			tweetsWindow.render();
 		});
